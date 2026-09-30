@@ -2,7 +2,7 @@ import dotenv from "dotenv"
 
 dotenv.config()
 
-const requiredEnv = ["MONGODB_URI", "JWT_SECRET"]
+const requiredEnv = ["MONGODB_URI", "JWT_SECRET", "NODE_ENV"]
 
 requiredEnv.forEach((envVar)=>{
     if(!process.env[envVar]){
@@ -11,7 +11,7 @@ requiredEnv.forEach((envVar)=>{
 })
 
 export const config={
-    port: process.env.PORT || 8080,
+    port: process.env.PORT,
     mongoUri: process.env.MONGODB_URI,
     jwtSecret: process.env.JWT_SECRET,
     nodeEnv: process.env.NODE_ENV || "development"
