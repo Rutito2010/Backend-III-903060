@@ -1,0 +1,30 @@
+{
+  "name": "shipnow-clase-3",
+  "version": "3.0.0",
+  "description": "ShipNow API — Clase 3 (mocks completos; capa de errores se suma en la semana)",
+  "main": "src/server.js",
+  "type": "module",
+  "scripts": {
+    "start": "node src/server.js",
+    "dev": "nodemon src/server.js"
+  },
+  "keywords": [
+    "backend",
+    "api",
+    "logistica",
+    "coderhouse",
+    "errores"
+  ],
+  "license": "MIT",
+  "dependencies": {
+    "@faker-js/faker": "^10.6.0",
+    "bcrypt": "^6.0.0",
+    "cors": "^2.8.5",
+    "dotenv": "^16.4.7",
+    "express": "^4.21.2",
+    "mongoose": "^8.12.1"
+  },
+  "devDependencies": {
+    "nodemon": "^3.1.9"
+  }
+}
