@@ -4,7 +4,7 @@ class MockController {
   getUsers = (req, res) => {
 
     try {
-      const users = generateMockUsers(10);
+      const users = generateMockUsers(20);
       return res.status(200).json({
         status: "success",
         payload: users,

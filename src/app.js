@@ -2,7 +2,7 @@ import express from 'express';
 import cors from 'cors';
 import usersRouter from './routes/users.js';
 import productsRouter from './routes/products.js';
-import mockRouter from './routes/mock.js';
+import mockRouter from './routes/mock.router.js';
 import {config} from "./config/config.js"
 const app = express();
 
