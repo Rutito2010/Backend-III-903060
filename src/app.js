@@ -5,6 +5,7 @@ import mocksRouter from './routes/mocks.router.js';
 import config from './config/index.js';
 import errorHandler from "./middlewares/errorHandler.js"
 import routeNotFound from './middlewares/routNotFoundHandler.js';
+import logger from './utils/logger.js';
 const app = express();
 
 app.use(cors());
@@ -19,6 +20,7 @@ if (config.nodeEnv !== 'production') {
 }
 
 app.get('/api/health', (req, res) => {
+  logger.info("api health endpoint")
   res.json({ status: 'ok', timestamp: new Date().toISOString() });
 });
 
