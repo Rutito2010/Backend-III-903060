@@ -6,6 +6,7 @@ import config from './config/index.js';
 import errorHandler from "./middlewares/errorHandler.js"
 import routeNotFound from './middlewares/routNotFoundHandler.js';
 import logger from './utils/logger.js';
+
 const app = express();
 
 app.use(cors());

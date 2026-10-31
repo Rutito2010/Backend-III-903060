@@ -1,4 +1,5 @@
 import AppError, {ErrorDictionary} from "../utils/errors.js";
+import logger from "../utils/logger.js";
 
 const errorHandler = (err, req, res, next)=>{
 
@@ -19,6 +20,8 @@ const errorHandler = (err, req, res, next)=>{
     const statusCode = isAppError ? err.statusCode : ErrorDictionary.INTERNAL_SERVER_ERROR.statusCode
     const message = isAppError ? err.message :  ErrorDictionary.INTERNAL_SERVER_ERROR.message
     const code = isAppError ? err.code :  ErrorDictionary.INTERNAL_SERVER_ERROR.code;
+
+
     res.status(statusCode).json({
         status: 'error',
         message,

@@ -1,11 +1,21 @@
-import mocksService from '../services/mocks.service.js';
+import mocksService from "../services/mocks.service.js";
+import logger from "../utils/logger.js";
+
 
 class MocksController {
   getUsers(req, res, next) {
     try {
       const result = mocksService.getUsers(req.query.qty);
-      res.json({ status: 'success', payload: result.users });
+      res.json({ status: "success", payload: result.users });
     } catch (error) {
+
+      const logData = {
+        method: req.method,
+        path: req.originalUrl,
+      };
+
+      logger.error({ ...logData, stack: error.stack });
+
       next(error);
     }
   }
@@ -13,7 +23,7 @@ class MocksController {
   getOrders(req, res, next) {
     try {
       const result = mocksService.getOrders(req.query.qty);
-      res.json({ status: 'success', payload: result.orders });
+      res.json({ status: "success", payload: result.orders });
     } catch (error) {
       next(error);
     }
@@ -22,7 +32,7 @@ class MocksController {
   getDeliveries(req, res, next) {
     try {
       const result = mocksService.getDeliveries(req.query.qty);
-      res.json({ status: 'success', payload: result.deliveries });
+      res.json({ status: "success", payload: result.deliveries });
     } catch (error) {
       next(error);
     }
@@ -34,11 +44,11 @@ class MocksController {
       const result = await mocksService.seedUsers(qty);
 
       res.status(201).json({
-        status: 'success',
+        status: "success",
         payload: {
           inserted: result.inserted,
-          collection: result.collection
-        }
+          collection: result.collection,
+        },
       });
     } catch (error) {
       next(error);
@@ -51,11 +61,11 @@ class MocksController {
       const result = await mocksService.seedOrders(qty);
 
       res.status(201).json({
-        status: 'success',
+        status: "success",
         payload: {
           inserted: result.inserted,
-          collection: result.collection
-        }
+          collection: result.collection,
+        },
       });
     } catch (error) {
       next(error);
@@ -68,11 +78,11 @@ class MocksController {
       const result = await mocksService.seedDeliveries(qty);
 
       res.status(201).json({
-        status: 'success',
+        status: "success",
         payload: {
           inserted: result.inserted,
-          collection: result.collection
-        }
+          collection: result.collection,
+        },
       });
     } catch (error) {
       next(error);
@@ -85,8 +95,8 @@ class MocksController {
       const result = await mocksService.seedAll(qty);
 
       res.status(201).json({
-        status: 'success',
-        payload: result
+        status: "success",
+        payload: result,
       });
     } catch (error) {
       next(error);
