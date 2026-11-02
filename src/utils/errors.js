@@ -40,6 +40,16 @@ export const ErrorDictionary = {
     statusCode: 400,
     message: 'Faltan datos obligatorios',
     code: "VALIDATION_ERROR"
+  },
+  "API_KEY_MISSING": {
+    statusCode: 401,
+    message: 'Falta el header x-api-key',
+    code: 'API_KEY_MISSING'
+  },
+  "API_KEY_INVALID": {
+    statusCode: 401,
+    message: 'API key invalida',
+    code: 'API_KEY_INVALID'
   }
 }
 

@@ -6,11 +6,23 @@ import config from './config/index.js';
 import errorHandler from "./middlewares/errorHandler.js"
 import routeNotFound from './middlewares/routNotFoundHandler.js';
 import logger from './utils/logger.js';
+import swaggerSpecs from './docs/swagger.config.js';
+import swaggerUi from "swagger-ui-express"
+import apiKey from './middlewares/apiKey.js';
 const app = express();
 
 app.use(cors());
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
+app.use("/docs", swaggerUi.serve, swaggerUi.setup(swaggerSpecs))
+
+app.get('/api/health', (req, res) => {
+  logger.info("api health endpoint")
+  res.json({ status: 'ok', timestamp: new Date().toISOString() });
+});
+
+app.use(apiKey)
+
 
 app.use('/api', apiRouter);
 
@@ -18,11 +30,6 @@ app.use('/api', apiRouter);
 if (config.nodeEnv !== 'production') {
   app.use('/api/mocks', mocksRouter);
 }
-
-app.get('/api/health', (req, res) => {
-  logger.info("api health endpoint")
-  res.json({ status: 'ok', timestamp: new Date().toISOString() });
-});
 
 app.use(routeNotFound);
 

@@ -6,11 +6,11 @@ class UsersService {
     this.userRepository = userRepostiory
   }
   async findAll() {
-    return usersRepo.findAll();
+    return this.userRepository.findAll();
   }
 
   async findById(id) {
-    const user = await userRepostiory.findById(id);
+    const user = await this.userRepository.findById(id);
     if (!user) {
       throw new AppError(ErrorDictionary.USER_NOT_FOUND);
     }
@@ -22,17 +22,17 @@ class UsersService {
       throw new AppError(ErrorDictionary.ADMIN_CREATION_FORBIDDEN);
     }
 
-    const existingUser = await userRepostiory.findByEmail(userData.email);
+    const existingUser = await this.userRepository.findByEmail(userData.email);
     if (existingUser) {
       throw new AppError(ErrorDictionary.EMAIL_ALREADY_EXIST);
     }
 
-    const newUser = await userRepostiory.create(userData);
+    const newUser = await this.userRepository.create(userData);
     return newUser;
   }
 
   async update(id, userData) {
-    const updatedUser = await userRepostiory.update(id, userData);
+    const updatedUser = await this.userRepository.update(id, userData);
     if (!updatedUser) {
       throw new AppError(ErrorDictionary.USER_NOT_FOUND);
     }
@@ -40,7 +40,7 @@ class UsersService {
   }
 
   async delete(id) {
-    const deletedUser = await userRepostiory.delete(id);
+    const deletedUser = await this.userRepository.delete(id);
     if (!deletedUser) {
       throw new AppError(ErrorDictionary.USER_NOT_FOUND);
     }

@@ -2,7 +2,7 @@ import dotenv from 'dotenv';
 
 dotenv.config();
 
-const requiredEnvVars = ['MONGODB_URI', 'JWT_SECRET'];
+const requiredEnvVars = ['MONGODB_URI', 'JWT_SECRET', 'API_KEY'];
 
 // si falta algo crítico, mejor fallar acá
 requiredEnvVars.forEach((envVar) => {
@@ -18,6 +18,7 @@ const config = {
   port: parseInt(process.env.PORT, 10) || 8080,
   mongoUri: process.env.MONGODB_URI,
   jwtSecret: process.env.JWT_SECRET,
+  apiKey: process.env.API_KEY,
   nodeEnv: process.env.NODE_ENV || 'development',
   logLevel: process.env.LOG_LEVEL || 'debug'
 };

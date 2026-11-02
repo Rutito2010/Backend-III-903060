@@ -32,6 +32,7 @@ Servidor en `http://localhost:8080` (salvo que cambies `PORT`).
 | `PORT` | Puerto (default `8080`) |
 | `MONGODB_URI` | Conexión a MongoDB |
 | `JWT_SECRET` | Secreto JWT / config interna |
+| `API_KEY` | Valor que hay que enviar en el header `x-api-key` |
 | `NODE_ENV` | `development` \| `test` \| `production` |
 | `LOG_LEVEL` | Nivel de logs |
 
@@ -69,6 +70,12 @@ bcrypt/insert y el repository persiste. El router no conoce Mongoose.
 | CRUD | `/api/users` | Usuarios |
 | CRUD | `/api/orders` | Pedidos |
 | CRUD | `/api/deliveries` | Entregas |
+
+## Documentación
+
+Swagger UI: `http://localhost:8080/api/docs`.
+
+La configuración está en `src/docs/swagger.config.js`.
 
 ## Scripts
 

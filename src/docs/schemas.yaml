@@ -1,0 +1,117 @@
+components:
+  schemas:
+    ErrorResponse:
+      type: object
+      properties:
+        status:
+          type: string
+          example: error
+        message:
+          type: string
+          example: "User not found"
+        code:
+          type: string
+          example: "USER_NOT_FOUND"
+    
+    SuccessMessage:
+      type: object
+      properties:
+        status:
+          type: string
+          example: "success"
+        message:
+          type: string
+          example: "Usuario eliminado"
+
+    User:
+      type: object
+      required:
+        - firstName
+        - lastName
+        - email
+        - password
+      properties:
+        _id:
+          type: string
+          readOnly: true
+          example: "671a2b3c4d5e6f7890123456"
+        firstName:
+          type: string
+          minLength: 1
+          example: "Ivan"
+          description: Nombre del usuario
+        lastName:
+          type: string
+          minLength: 1
+          example: "Passalia"
+          description: Apellido del usuario
+        email:
+          type: string
+          format: email
+          example: "ivan@example.com"
+          description: Email único del usuario
+        password:
+          type: string
+          format: password
+          example: "SecurePassword123"
+        role:
+          type: string
+          enum:
+            - admin
+            - customer
+            - driver
+            - store
+          default: customer
+          example: customer
+        isAvailable:
+          type: boolean
+          default: true
+          example: true
+        documents:
+          type: array
+          default: []
+          items:
+            type: object
+            properties:
+              name:
+                type: string
+                example: "DNI"
+              reference:
+                type: string
+                example: "https://storage.example.com/documents/dni.pdf"
+        createdAt:
+          type: string
+          format: date-time
+          readOnly: true
+        updatedAt:
+          type: string
+          format: date-time
+          readOnly: true
+
+    UserCreate:
+      type: object
+      required: [firstName, lastName, email, password]
+      properties:
+        firstName:
+          type: string
+          example: Ana
+        lastName:
+          type: string
+          example: Gómez
+        email:
+          type: string
+          format: email
+          example: ana@example.com
+        password:
+          type: string
+          example: coder123
+        role:
+          type: string
+          enum: [customer, driver, store]
+          description: No se puede crear un admin desde este endpoint
+          example: customer
+        isAvailable:
+          type: boolean
+          example: true
+
+

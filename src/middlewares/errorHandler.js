@@ -1,7 +1,7 @@
 import AppError, {ErrorDictionary} from "../utils/errors.js";
 
 const errorHandler = (err, req, res, next)=>{
-
+console.log(err.message)
     if(err.name === "CastError"){
         err = new AppError(ErrorDictionary.INVALID_ID)
     }

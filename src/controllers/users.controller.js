@@ -1,7 +1,7 @@
 import UsersService from '../services/users.service.js';
-import { userRepostiory } from '../repositories/index.js';
+import { userRepository } from '../repositories/index.js';
 
-const usersService = new UsersService(userRepostiory)
+const usersService = new UsersService(userRepository)
 
 class UsersController {
   async findAll(req, res, next) {
