@@ -25,7 +25,7 @@ const swaggerOptions= {
         },
         security: [{ApiKeyAuth:[]}]
     },
-    apis: ["./src/docs/**/*.yaml", "src/routes/*.js"]
+    apis: ['./src/docs/**/*.yaml', './src/routes/*.js']
 }
 
 const swaggerSpecs = swaggerJSDoc(swaggerOptions)

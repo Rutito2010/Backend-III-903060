@@ -14,16 +14,16 @@ const app = express();
 app.use(cors());
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
-app.use("/docs", swaggerUi.serve, swaggerUi.setup(swaggerSpecs))
+app.use('/api/docs', swaggerUi.serve, swaggerUi.setup(swaggerSpecs, {
+  swaggerOptions: { persistAuthorization: true }
+}));
 
 app.get('/api/health', (req, res) => {
-  logger.info("api health endpoint")
+  logger.info('api health endpoint');
   res.json({ status: 'ok', timestamp: new Date().toISOString() });
 });
 
-app.use(apiKey)
-
-
+app.use('/api', apiKey);
 app.use('/api', apiRouter);
 
 // mocks solo en desarrollo / test

@@ -55,10 +55,11 @@ export const ErrorDictionary = {
 
 
 class AppError extends Error {
-  constructor({message, statusCode, code}) { 
-    super(message);
-    this.statusCode = statusCode;
-    this.code = code
+  constructor(errorOrMessage, statusCode, code) {
+    const fromDictionary = errorOrMessage !== null && typeof errorOrMessage === 'object';
+    super(fromDictionary ? errorOrMessage.message : errorOrMessage);
+    this.statusCode = fromDictionary ? errorOrMessage.statusCode : statusCode;
+    this.code = fromDictionary ? errorOrMessage.code : code;
   }
 }
 /*
