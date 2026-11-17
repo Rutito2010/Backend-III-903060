@@ -50,6 +50,31 @@ export const ErrorDictionary = {
     statusCode: 401,
     message: 'API key invalida',
     code: 'API_KEY_INVALID'
+  },
+  "INVALID_FILE_TYPE":{
+    statusCode: 400,
+    message: "Tipo de archivo invalido",
+    code: "INVALID_FILE_TYPE"
+  },
+  "FILE_REQUIRED":{
+    statusCode: 400,
+    message: "Requiere al menos un archivo",
+    code: "FILE_REQUIRED"
+  },
+  "INVALID_DOCUMENT_TYPE":{
+    statusCode: 400,
+    message: "No es un tipo de documento valido",
+    code: "INVALID_DOCUMENT_TYPE"
+  },
+  "INVALID_FILE_SIZE":{
+    statusCode: 400,
+    message: "Archivo demasiado grande",
+    code: "INVALID_FILE_SIZE"
+  },
+  "UPLOAD_ERROR":{
+    statusCode: 400,
+    message: "Error al subir el archivo",
+    code: "UPLOAD_ERROR"
   }
 }
 

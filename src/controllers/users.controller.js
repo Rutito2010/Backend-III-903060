@@ -4,8 +4,17 @@ import { userRepository } from '../repositories/index.js';
 const usersService = new UsersService(userRepository)
 
 class UsersController {
-  async findAll(req, res, next) {
+//api/users/:id/documents?type= api/users/:id/documents/:type
+  async uploadDocument(req, res, next){
+    try {
+      const updatedUser = await usersService.addDocument(req.params.id, req.file, req.body.type)
+      res.json({ status: 'success', payload: updatedUser });
+    } catch (error) {
+      next(error)
+    }
+  }
 
+  async findAll(req, res, next) {
     try {
       const users = await usersService.findAll();
       res.json({ status: 'success', payload: users });

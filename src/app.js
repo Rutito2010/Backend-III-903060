@@ -22,9 +22,9 @@ app.get('/api/health', (req, res) => {
   logger.info('api health endpoint');
   res.json({ status: 'ok', timestamp: new Date().toISOString() });
 });
-
+/*
 app.use('/api', apiKey);
-app.use('/api', apiRouter);
+*/app.use('/api', apiRouter);
 
 // mocks solo en desarrollo / test
 if (config.nodeEnv !== 'production') {

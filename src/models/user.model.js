@@ -1,4 +1,15 @@
 import mongoose from 'mongoose';
+
+const documentSchema = new mongoose.Schema({
+  originalName: { type: String, required: true},
+  fileName: { type: String, required: true},
+  path: { type: String, required:true},//"uploads/documents/{fileName}",
+  mimeType: { type: String, required: true /**enum:podemos definir mimetypes para que mongo tmb lo valide*/},
+  size: { type: Number, required: true },
+  type: { type: String, required: true },
+  uploadedAt: { type: Date, default: Date.now }
+}, {_id: false})
+
 const userSchema = new mongoose.Schema({
   firstName: {
     type: String,
@@ -31,12 +42,7 @@ const userSchema = new mongoose.Schema({
     default: true
   },
   documents: {
-    type: [
-      {
-        name: { type: String },
-        reference: { type: String }
-      }
-    ],
+    type: [documentSchema],
     default: []
   }
 }, {
